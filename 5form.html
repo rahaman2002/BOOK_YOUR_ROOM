@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>FORM</title>
+</head>
+<body style="background-color:gray;">
+<table align="center"  width="800px">
+<th align="center">    
+<fieldset align="center">
+    <h2 align="center" style="background-color:deeppink;">Choose Your Preference</h2>
+	
+    <form action="6prefer.php" method="POST" id="form">
+
+		<label for="aadhaar">Aadhaar :<input type="text" id="aadhaar" name="id" required placeholder="xxxxxxxx5678" class="form-control"></label><br>
+		<span id="perror"></span><br>
+
+		<label for="type">Room :</label>
+		<!-- <input type="text" id="type" name="type"  required placeholder="AC/Non-AC/Modern/Double"></label><br/><br/> -->
+		<select name="type" id="room" style="width: 200px;">
+			<option value="AC">AC</option>
+			<option value="NON-AC">NON-AC</option>
+			<option value="Double Beds">Double Beds</option>
+			<option value="Modern Rooms">Modern Rooms</option>
+		</select><br><br>
+
+		<label for="money">Amount :</label>
+			<!-- <input type="text" id="money" name="money"  required placeholder="2800/2000/3000/2700"></label><br/><br/> -->
+			<select name="money" id="money" style="width: 200px;">
+				<option value="2800">3000</option>
+				<option value="2000">2500</option>
+				<option value="2700">3200</option>
+				<option value="3000">2800</option>
+			</select><br><br>
+		
+		<label for="in"> From Date :<input type="date" id="in" name="from" required ></label><br/><br/>
+		
+		<label for="out">To Date :<input type="date" id="out" name="to" required ></label><br/><br/>		
+
+		<input type="submit" style="background-color:yellow" value="SUBMIT">
+    </form>   
+</fieldset> 
+</th></table> 
+<script>
+  let form=document.getElementById('form');
+  form.addEventListener("submit",event=>{event.preventDefault();validate();});
+
+function validate(event)
+{
+  let  aid=document.getElementById('aadhaar');
+  let perror=document.getElementById('perror');
+  let id=aid.value.trim();
+
+          if(id=="")
+          {
+              perror.innerText="Aadhaar Id can't be empty";
+              event.preventDefault();
+          }
+          if(!(/[0-9]/).test(id))
+          { 
+              perror.innerText= "Aadhaar Id  should contain numbers only";
+              event.preventDefault();
+          }
+          if(id.length!=12)
+          {
+              perror.innerText='Aadhaar Id should contain 12 digits';
+              event.preventDefault();
+          }                
+        form.submit();
+}
+</script>
+</body>
+</html>

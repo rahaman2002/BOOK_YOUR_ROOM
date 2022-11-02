@@ -1,0 +1,89 @@
+<html>
+<head>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="bootstrap.css" rel="stylesheet">
+  <script src="bootstrap.bundle.js"></script>
+  <style>
+    body {
+      background-image: url('bg.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed; 
+      background-size: 100% 100%;
+    }
+    </style>
+</head>
+    <h1 align="center" style="color:white; background-color:black;" class="mt-2"><b> Book Your Room </b></h1>
+<div class="container">
+<div class="row"> 
+<div class="col-md-6"> 
+  <br>
+  <br>
+  <br>
+  <br>
+        
+<form action="3sql_data.php" id="form" method="POST" >
+  
+<h2 align="left" style="color:black;"><b><u> LOGIN HERE </u></b></h2>
+<br>
+
+<label for="name" class="mx-2 px-2"><b>Name : </b></lable>
+<div class="input-group">
+<input type="text" id="name" name="name" class="mt-2 px-5" required placeholder="Enter your Name" class="form-control" >
+
+<label for="uadai" class="mt-2 me-3 px-1 pt-2 "><b>Aadhaar Id :</b></lable>
+<div class="input-group">
+<input type="text" id="uadai" name="uadai" class="mt-2 me-2 px-5 pt-1" required placeholder="xxxxxxxx5678" class="form-control" >
+
+<label for="cell" class="mt-2 me-3 px-1 pt-2"><b>Contact No. :</b></lable>
+<div class="input-group">
+<input type="text" id="cell" name="mobile" class="mt-2 px-5" required placeholder="Mobile Number" class="form-control" > 
+
+<i><mark><span id="perror"></span></mark></i> <br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+<br/> <br/><button type="submit" style="background-color:black; color: whitesmoke;" class=" px-5 mt-3 mb-2" ><b><i>Login</i></b></button>
+
+
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<h2  align="right">Contact Us   :</h2>
+<h5  align="right"> More details:9866751381</h5>
+<img src="footer.png" align="right" width="180px" height="50px">
+
+
+<script>
+  let form=document.getElementById('form');
+  form.addEventListener("submit",event=>{event.preventDefault();validate();});
+
+function validate()
+{
+  let  aid=document.getElementById('uadai');
+  let perror=document.getElementById('perror');
+  let id=aid.value.trim();
+
+          if(id=="")
+          {
+              perror.innerText="Aadhaar Id can't be empty";
+              return false;
+          }
+          if(!(/[0-9]/).test(id))
+          { 
+              perror.innerText= "Aadhaar Id  should contain numbers only";
+              return false;
+          }
+          if(id.length!=12)
+          {
+              perror.innerText='Aadhaar Id should contain 12 digits';
+              return false;
+          }                
+          form.submit();
+}
+</script>
+</body>
+</html>
